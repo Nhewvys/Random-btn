@@ -9,9 +9,9 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background: linear-gradient(to bottom right, #4286f4, #7c37ad); */
-    background: linear-gradient(to bottom right, #00ff00, #ffff00);
-    /*background: linear-gradient(to bottom right, #ff7f50, #ff69b4);*/
+    /*background: linear-gradient(to bottom right, #4286f4, #7c37ad); */
+    /*background: linear-gradient(to bottom right, #00ff00, #ffff00);*/
+    background: linear-gradient(to bottom right, #ff7f50, #ff69b4);
 }
 .main-play{
     text-align: center;
