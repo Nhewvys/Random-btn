@@ -31,7 +31,7 @@ function login() {
   const username = usernameInput.value;
   const password = passwordInput.value;
 
-  if (username === "Nhewvys" && password === "123456") {
+  if (username === "nhewvys" && password === "123456") {
     redirectToGamePage();
   } else if (username === "usuario2" && password === "senha2") {
     redirectToGamePage();
