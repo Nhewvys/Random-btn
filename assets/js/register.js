@@ -1,8 +1,3 @@
-firebase.auth().onAuthStateChanged(user =>{
-  if(user){
-    window.location.href = "jogo.html"
-  }
-})
 const passwordInput = document.getElementById("register-password");
 const emailInput = document.getElementById("user-email");
 const confirmPasswordInput = document.getElementById("confirm-password");
