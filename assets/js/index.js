@@ -30,16 +30,27 @@ function login() {
 
   const username = usernameInput.value;
   const password = passwordInput.value;
+  firebase.auth().signInWithEmailAndPassword(username, password).then(response =>{
+    redirectToGamePage()
 
-  if (username === "nhewvys" && password === "123456") {
-    redirectToGamePage();
-  } else if (username === "usuario2" && password === "senha2") {
-    redirectToGamePage();
-  } else if (username === "usuario3" && password === "senha3") {
-    redirectToGamePage();
-  } else {
-    alert("Credenciais inválidas. Por favor, tente novamente.");
-  }
+}).catch(error =>{
+    alert(error.code)
+
+});
+}
+function recoverPassword() {
+  const usernameInput = document.getElementById("user");
+  const username = usernameInput.value;
+
+  firebase.auth().sendPasswordResetEmail(username)
+    .then(() => {
+      
+      alert("Um email de recuperação foi enviado para o seu endereço.");
+    })
+    .catch(error => {
+      alert("Ocorreu um erro ao enviar o email de recuperação.");
+      console.error(error);
+    });
 }
 
 function redirectToGamePage() {
@@ -49,9 +60,16 @@ function redirectToGamePage() {
   loginButton.innerHTML = 'Carregando...';
   loginButton.disabled = true;
   loginButton.prepend(loadingIcon);
-
+  
   // Redirecionar após 3 segundos
   setTimeout(function() {
     window.location.href = "jogo.html";
-  }, 3000);
+
+    loadingIcon.remove();
+    loginButton.disabled = false;
+    loginButton.innerHTML = 'Logar';
+  }, 1000);
+
 }
+
+

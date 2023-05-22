@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <script src="assets/js/register.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>vamos jogar?!</title>
+</head>
+
+<body>
+    <form>
+        <main class="card register">
+            <div class="container">
+                <h1>Registro</h1>
+                <div class="inputs">
+                    <label for="user">Seu e-mail</label>
+                    <div class="input-box">
+                        <i id="icon-user" class="fa-solid fa-envelope"></i>
+                        <input id="user-email" type="email" placeholder="digite seu e-mail">
+                        <small></small>
+                    </div>
+                    <label for="senha">Senha</label><br>
+                    <div class="input-box">
+                        <i id="eyeIcon" class="fa-solid fa-eye"></i>
+                        <input id="register-password" type="password" placeholder="digite a senha">
+                        <small id="password-error"></small>
+                    </div>
+                    <label for="senha">confirmar senha</label><br>
+                    <div class="input-box last">
+                        <i id="eyeIconfash" class="fa-solid fa-eye"></i>
+                        <input id="confirm-password" type="password" placeholder="confirme a senha">
+                    </div>
+                    <small id="confirm-password-error"></small>
+                </div>
+                <button type="submit" class="btn-login">Registrar</button>
+                <p class="cadastro">Já possui conta? <a href="index.html" id="signup-link" onclick="recoverPassword()">Entrar</a></p>
+            </div>
+        </main>
+    </form>
+
+    <footer>
+        <p>made by &copyNhewvys</p>
+    </footer>
+
+</body>
+
+
+</html>
