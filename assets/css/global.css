@@ -96,11 +96,11 @@ body{
 .last{
     margin-bottom: 0;
 }
-#confirm-password-error{
-    color: red;
+#confirm-password-error, #password-error{
+    color: #ff0000;
     display: block;
-    font-size: .6rem;
-    
+    font-size: .8rem;
+    margin-bottom: 1rem;
     min-height: 1.5rem;
 }
 i{
@@ -181,6 +181,7 @@ footer{
     position: absolute;
     bottom: 10px;
 }
+/* -----------mobile-version----------- */
 @media  screen and (max-width: 600px) {
     body{
         display: block;
@@ -190,8 +191,15 @@ footer{
     .login{
         width: 100vw;
         height: 100vh;
-        padding: 0 rem;
+        padding: 0;
         border-radius: 0;
+        padding: 0;
+    }
+    .card{
+        border-radius: 0;
+        height: 100vh;
+    }
+    .register{
         padding: 0;
     }
     .container > h1{
@@ -207,18 +215,27 @@ footer{
         border: none;
     }
     .container label, i{
-        
         font-size: 1rem
     }
     .container > .btn-login{
         padding: 10px 40px;
         font-size: 1rem;
     }
+    .container > .btn-login:hover::before{
+        top: -15px;
+    }
     .input-box{
         margin-bottom: 3rem;
     }
+    .input-box.last{
+        margin-bottom: 0;
+    }
     input{
         font-size: 1.2rem;
+    }
+    .cadastro, #register{
+        margin-top: .5rem;
+        font-size: .8rem;
     }
     footer{
         font-family: 'Poppins', sans-serif;

@@ -1,7 +1,16 @@
+// firebase.auth().onAuthStateChanged(user =>{
+//   if(user){
+//     window.location.href = "jogo.html"
+//   }
+// })
+
 const passwordInput = document.getElementById("senha");
 const eyeIcon = document.getElementById("eyeIcon");
 const loginButton = document.querySelector(".btn-login");
 
+const form = document.querySelector('form').addEventListener('submit',(e)=> {
+  e.preventDefault(); // Impede o envio padrão do formulário (refresh da página)
+});
 eyeIcon.addEventListener("click", function() {
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
@@ -38,6 +47,7 @@ function login() {
 
 });
 }
+
 function recoverPassword() {
   const usernameInput = document.getElementById("user");
   const username = usernameInput.value;

@@ -16,46 +16,37 @@
 </head>
 
 <body>
-    <main class="card login">
-        <div class="container">
-            <h1>Login</h1>
-            <div class="inputs">
-
-                <label for="user">User</label>
-                <div class="input-box">
-                    <i id="icon-user" class="fa-solid fa-user"></i>
-                    <input id="user" type="email" placeholder="digite seu user">
+    <form>
+        <main class="card login">
+            <div class="container">
+                <h1>Login</h1>
+                <div class="inputs">
+                    <label for="user">Email</label>
+                    <div class="input-box">
+                        <i id="icon-user" class="fa-solid fa-user"></i>
+                        <input id="user" type="email" placeholder="Digite seu e-mail" autocomplete="email">
+                    </div>
+                    <label for="senha">Senha</label><br>
+                    <div class="input-box">
+                        <i id="eyeIcon" class="fa-solid fa-eye"></i>
+                        <input id="senha" type="password" placeholder="Digite a senha" autocomplete="current-password">
+                    </div>
                 </div>
-                <label for="senha">Password</label><br>
-                <div class="input-box">
-                    <i id="eyeIcon" class="fa-solid fa-eye"></i>
-                    <input id="senha" type="password" placeholder="digite a senha">
-                </div>
-
+                <button type="submit" class="btn-login">Logar</button>
+                <p class="cadastro">Esqueceu a senha? <a href="#" id="signup-link" onclick="recoverPassword(); e.preventDefault();">recuperar</a></p>
+                <p id="register">Não tem conta? <a href="register.html" >cadastre-se</a></p>
             </div>
-            <button type="submit" class="btn-login">Logar</button>
-            <p class="cadastro">Esqueceu a senha? <a href="#" id="signup-link" onclick="recoverPassword(); e.preventDefault();">recuperar</a></p>
-            <p id="register">Não tem conta? <a href="register.html" >cadastre-se</a></p>
-        </div>
-    </main>
+        </main>
+    </form>
 
     <footer>
         <p>made by &copyNhewvys</p>
     </footer>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyAqyDBh5SHDWtoFKxnKptnzzEw_4fY5Fsc",
-        authDomain: "login-and-register-fab16.firebaseapp.com",
-        projectId: "login-and-register-fab16",
-        storageBucket: "login-and-register-fab16.appspot.com",
-        messagingSenderId: "600311528213",
-        appId: "1:600311528213:web:ce53af98b86aa33292871c"
-    };
-    firebase.initializeApp(firebaseConfig);
+    <script src="assets/js/firebase-init.js"></script>
+    <script src="assets/js/auth-guard.js"></script>
     
-    </script>
 </body>
 
 
