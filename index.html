@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -42,7 +42,20 @@
     <footer>
         <p>made by &copyNhewvys</p>
     </footer>
-
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAqyDBh5SHDWtoFKxnKptnzzEw_4fY5Fsc",
+        authDomain: "login-and-register-fab16.firebaseapp.com",
+        projectId: "login-and-register-fab16",
+        storageBucket: "login-and-register-fab16.appspot.com",
+        messagingSenderId: "600311528213",
+        appId: "1:600311528213:web:ce53af98b86aa33292871c"
+    };
+    firebase.initializeApp(firebaseConfig);
+    
+    </script>
 </body>
 
 
