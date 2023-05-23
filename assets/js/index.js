@@ -53,7 +53,25 @@ function login() {
       redirectToGamePage();
     })
     .catch((error) => {
-      getErrorMessage(error);
+      alert(getErrorMessage(error));
+      loadingHide(); // Remove o ícone de carregamento
+    });
+}
+function recoverPassword() {
+  const emailInput = document.getElementById("user");
+
+  const email = emailInput.value;
+
+  loading(); // Exibe o ícone de carregamento
+
+  firebase.auth().sendPasswordResetEmail(email)
+    .then(() => {
+      alert("Um email de recuperação foi enviado para o seu endereço.");
+      loadingHide(); // Remove o ícone de carregamento
+    })
+    .catch((error) => {
+      alert("Ocorreu um erro ao enviar o email de recuperação.");
+      console.error(error);
       loadingHide(); // Remove o ícone de carregamento
     });
 }
