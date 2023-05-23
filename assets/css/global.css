@@ -91,16 +91,15 @@ body{
 
 .input-box{
     border-bottom: 1px solid #fff;
-    margin-bottom: 1.5rem;
 }
 .last{
     margin-bottom: 0;
 }
-#confirm-password-error, #password-error{
+small{
     color: #ff0000;
     display: block;
     font-size: .8rem;
-    margin-bottom: 1rem;
+    
     min-height: 1.5rem;
 }
 i{
@@ -224,12 +223,14 @@ footer{
     .container > .btn-login:hover::before{
         top: -15px;
     }
+    
     .input-box{
-        margin-bottom: 3rem;
-    }
-    .input-box.last{
         margin-bottom: 0;
     }
+    small{
+        margin-bottom: .8rem;
+    }
+   
     input{
         font-size: 1.2rem;
     }

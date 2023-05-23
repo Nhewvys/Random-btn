@@ -26,14 +26,16 @@
                         <i id="icon-user" class="fa-solid fa-user"></i>
                         <input id="user" type="email" placeholder="Digite seu e-mail" autocomplete="email">
                     </div>
+                    <small id="error-email"></small>
                     <label for="senha">Senha</label><br>
                     <div class="input-box">
                         <i id="eyeIcon" class="fa-solid fa-eye"></i>
                         <input id="senha" type="password" placeholder="Digite a senha" autocomplete="current-password">
                     </div>
+                    <small id="error-senha"></small>
                 </div>
                 <button type="submit" class="btn-login">Logar</button>
-                <p class="cadastro">Esqueceu a senha? <a href="#" id="signup-link" onclick="recoverPassword(); e.preventDefault();">recuperar</a></p>
+                <p class="cadastro">Esqueceu a senha? <a href="#" id="signup-link" onclick="recoverPassword()">recuperar</a></p>
                 <p id="register">Não tem conta? <a href="register.html" >cadastre-se</a></p>
             </div>
         </main>
@@ -45,7 +47,9 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="assets/js/firebase-init.js"></script>
-    
+    <script>
+        
+    </script>
     
 </body>
 

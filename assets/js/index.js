@@ -7,11 +7,15 @@
 const passwordInput = document.getElementById("senha");
 const eyeIcon = document.getElementById("eyeIcon");
 const loginButton = document.querySelector(".btn-login");
+const errorEmail = document.getElementById("error-email");
+const errorSenha = document.getElementById("error-senha");
 
-const form = document.querySelector('form').addEventListener('submit',(e)=> {
+
+const form = document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault(); // Impede o envio padrão do formulário (refresh da página)
 });
-eyeIcon.addEventListener("click", function() {
+
+eyeIcon.addEventListener("click", function () {
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
     eyeIcon.classList.remove("fa-eye");
@@ -23,11 +27,11 @@ eyeIcon.addEventListener("click", function() {
   }
 });
 
-loginButton.addEventListener("click", function() {
+loginButton.addEventListener("click", function () {
   login();
 });
 
-passwordInput.addEventListener("keyup", function(event) {
+passwordInput.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     login();
   }
@@ -39,47 +43,57 @@ function login() {
 
   const username = usernameInput.value;
   const password = passwordInput.value;
-  firebase.auth().signInWithEmailAndPassword(username, password).then(response =>{
-    redirectToGamePage()
 
-}).catch(error =>{
-    alert(error.code)
+  loading(); // Exibe o ícone de carregamento
 
-});
-}
-
-function recoverPassword() {
-  const usernameInput = document.getElementById("user");
-  const username = usernameInput.value;
-
-  firebase.auth().sendPasswordResetEmail(username)
-    .then(() => {
-      
-      alert("Um email de recuperação foi enviado para o seu endereço.");
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(username, password)
+    .then((response) => {
+      redirectToGamePage();
     })
-    .catch(error => {
-      alert("Ocorreu um erro ao enviar o email de recuperação.");
-      console.error(error);
+    .catch((error) => {
+      getErrorMessage(error);
+      loadingHide(); // Remove o ícone de carregamento
     });
 }
 
+function getErrorMessage(error) {
+  if (error.code == "auth/wrong-password") {
+    errorSenha.textContent = "Senha incorreta";
+  }
+  if(error.code == "auth/user-not-found"){
+    errorEmail.textContent = "Parece que você nâo tem uma conta"
+  }
+  if (error.code == "auth/too-many-requests") {
+    return "Hmm, parece que estamos cheios agora.";
+  }
+  return error.message;
+}
+
 function redirectToGamePage() {
-  // Exibir ícone de carregamento
-  const loadingIcon = document.createElement('i');
-  loadingIcon.className = 'fa-solid fa-spinner fa-spin';
-  loginButton.innerHTML = 'Carregando...';
+  loading(); // Exibe o ícone de carregamento
+
+  setTimeout(function () {
+    window.location.href = "jogo.html";
+    loadingHide()
+  }, 1000);
+}
+
+function loading() {
+  const loadingIcon = document.createElement("i");
+  loadingIcon.className = "fa-solid fa-spinner fa-spin";
+  loginButton.innerHTML = "Carregando...";
   loginButton.disabled = true;
   loginButton.prepend(loadingIcon);
-  
-  // Redirecionar após 3 segundos
-  setTimeout(function() {
-    window.location.href = "jogo.html";
-
-    loadingIcon.remove();
-    loginButton.disabled = false;
-    loginButton.innerHTML = 'Logar';
-  }, 1000);
-
 }
+
+function loadingHide() {
+  loginButton.innerHTML = "Logar";
+  loginButton.disabled = false;
+}
+
+
+
 
 

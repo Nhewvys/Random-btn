@@ -5,6 +5,8 @@ const eyeIcon = document.getElementById("eyeIcon");
 const eyeIconfash = document.getElementById("eyeIconfash");
 const passwordError = document.getElementById("password-error");
 const confirmPasswordError = document.getElementById("confirm-password-error");
+const error1 = document.getElementById("error1");
+const loginButton = document.querySelector(".btn-login");
 const form = document.querySelector('form').addEventListener('submit',(e)=> {
   e.preventDefault(); // Impede o envio padrão do formulário (refresh da página)
 });
@@ -12,17 +14,31 @@ const form = document.querySelector('form').addEventListener('submit',(e)=> {
 function register(){
   const emailR = emailInput.value;
   const passwordR = passwordInput.value
-  firebase.auth().createUserWithEmailAndPassword(emailR, passwordR).then(() =>{
-    alert("Email cadastrado com sucesso")
-    window.location.href = "jogo.html";
+  loading()
+  
+  if (passwordR.length < 6) {
+    // Senha é menor que 6 caracteres
+    passwordError.textContent = "A senha deve ter pelo menos 6 caracteres.";
+    confirmPasswordError.textContent = "A senha deve ter pelo menos 6 caracteres.";
+    return; // Impede o registro se a senha for inválida
+  }
+
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(emailR, passwordR)
+    .then(() =>{
+      error1.textContent = "Email cadastrado com sucesso";
+      window.location.href = "jogo.html";
   }).catch(error =>{
-    alert(getError(error))
+      getError(error);
+      loadingHide()
+    
   })
 }
 
 function getError(error){
   if(error.code == "auth/email-already-in-use"){
-    return "Este e-mail já esta em uso"
+    error1.textContent = "Este e-mail já esta em uso"
   }
 
   return error.message;
@@ -58,6 +74,17 @@ function validatePassword() {
     passwordError.textContent = ""
   }
 }
+function loading() {
+  const loadingIcon = document.createElement("i");
+  loadingIcon.className = "fa-solid fa-spinner fa-spin";
+  loginButton.innerHTML = "Carregando...";
+  loginButton.disabled = true;
+  loginButton.prepend(loadingIcon);
+}
 
+function loadingHide() {
+  loginButton.innerHTML = "Logar";
+  loginButton.disabled = false;
+}
 passwordInput.addEventListener("input", validatePassword);
 confirmPasswordInput.addEventListener("input", validatePassword);
