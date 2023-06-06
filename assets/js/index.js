@@ -83,6 +83,9 @@ function getErrorMessage(error) {
   if(error.code == "auth/user-not-found"){
     errorEmail.textContent = "Parece que você nâo tem uma conta"
   }
+  if(error.code == "auth/invalid-email"){
+    errorEmail.textContent = "Insira um email válido"
+  }
   if (error.code == "auth/too-many-requests") {
     return "Hmm, parece que estamos cheios agora.";
   }
@@ -110,8 +113,3 @@ function loadingHide() {
   loginButton.innerHTML = "Logar";
   loginButton.disabled = false;
 }
-
-
-
-
-

@@ -43,7 +43,7 @@ function getError(error){
     error1.textContent = "Este e-mail já está em uso";
   }
   if(error.code == "auth/invalid-email"){
-    error1.textContent = "insira um e-mail valido"
+    error1.textContent = "insira um e-mail válido"
   }
   return error.message;
 }
