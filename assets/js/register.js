@@ -30,7 +30,7 @@ function register(){
     .then(() => {
       error1.textContent = "Email cadastrado com sucesso";
       window.location.href = "jogo.html";
-      loading();
+      loadingHide();
     })
     .catch(error => {
       getError(error);
