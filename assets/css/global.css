@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -13,7 +15,8 @@ body{
     /*background: linear-gradient(to bottom right, #00ff00, #ffff00);*/
     /* background: linear-gradient(to bottom right, #ff7f50, #ff69b4); */
 }
-.main-play{
+
+.main-play {
     text-align: center;
     height: 100%;
     width: 100%;
@@ -21,9 +24,11 @@ body{
     background-color: #333;
     font-family: sans-serif;
 }
-.play-title{
+
+.play-title {
     color: #f8f8f8;
 }
+
 :is(#yes, #no) {
     margin: .7rem;
     padding: .6rem 2.5rem;
@@ -32,10 +37,11 @@ body{
     border-radius: 30px;
     cursor: pointer;
     box-shadow: 0px 0px 10px rgb(10, 205, 0);
-  
+
 }
+
 /* --------index-------- */
-.card{
+.card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,80 +52,90 @@ body{
     position: relative;
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgba(128, 0, 0, 0.5);
-    
+
 }
-.login{
+
+.login {
     padding: .5rem 1rem;
 }
-.register{
+
+.register {
     padding: 1rem;
 }
-.container{
+
+.container {
     width: 100%;
 }
 
-.container::before{
+.container::before {
     content: "";
     position: absolute;
     border: 15px solid transparent;
     border-top: 15px solid #4CAF50;
     border-right: 15px solid #4CAF50;
-    border-radius: 0px 10px 0px 0px ;
+    border-radius: 0px 10px 0px 0px;
     right: 0;
     top: 0;
 }
 
-.container > h1{
+.container>h1 {
     font-weight: 400;
-    color:  #4CAF50;
+    color: #4CAF50;
     position: relative;
     margin-bottom: 1rem;
 }
-.container > h1::before{
+
+.container>h1::before {
     content: "";
     position: absolute;
     width: 19%;
-    background-color:  #FFC107 ;
+    background-color: #FFC107;
     height: 2px;
     bottom: 9px;
     border-radius: 40px;
 }
-.container label{
+
+.container label {
     color: #fff;
     font-size: .8rem
 }
 
-.input-box{
+.input-box {
     border-bottom: 1px solid #fff;
 }
-.last{
+
+.last {
     margin-bottom: 0;
 }
-small{
+
+small {
     color: #ff0000;
     display: block;
     font-size: .8rem;
-    
+
     min-height: 1.5rem;
 }
-i{
+
+i {
     min-width: 1rem;
     font-size: .8rem;
     color: #fff;
 }
-.input-box > input{
+
+.input-box>input {
     border: none;
     background-color: transparent;
     outline: none;
     color: #fff;
 }
-.input-box > input::placeholder{
+
+.input-box>input::placeholder {
     letter-spacing: 0;
     color: #fff;
     opacity: .5;
 }
 
-.container > .btn-login{
+.container>.btn-login {
     border: 2px solid #4CAF50;
     border-radius: 40px;
     padding: 5px 30px;
@@ -130,7 +146,8 @@ i{
     z-index: 1;
     overflow: hidden;
 }
-.container > .btn-login::before{
+
+.container>.btn-login::before {
     content: "";
     position: absolute;
     border-radius: 60% 60% 0 0;
@@ -142,103 +159,133 @@ i{
     z-index: -1;
     transition: 1s;
 }
-.container > .btn-login:hover::before{
+
+.container>.btn-login:hover::before {
     background-color: #4CAF50;
     top: -10px;
 }
 
-.cadastro, #register{
+.cadastro,
+#register {
     font-size: .6rem;
     color: #fff;
     padding: 10px 10px 4px;
     margin-left: -10px;
 }
-#register{
+
+#register {
     font-size: .6rem;
     color: #fff;
     padding: 0px 10px;
     margin-left: -10px;
 }
-#register > a{
+
+#register>a {
     text-decoration: none;
-    color: #4CAF50; 
+    color: #4CAF50;
 }
-#register> a:hover{
-    color: #00fb47;
-}
-.cadastro > a{
-    text-decoration: none;
-    color: #4CAF50;    
-}
-.cadastro > a:hover{
+
+#register>a:hover {
     color: #00fb47;
 }
 
-footer{
+.cadastro>a {
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+.cadastro>a:hover {
+    color: #00fb47;
+}
+
+footer {
     font-family: 'Poppins', sans-serif;
     font-size: .8rem;
     position: absolute;
     bottom: 10px;
 }
+
+@media screen and (min-width: 605px) {
+
+    .login,
+    .card {
+        transform: scale(120%);
+    }
+}
+
 /* -----------mobile-version----------- */
-@media  screen and (max-width: 600px) {
-    body{
+@media screen and (max-width: 600px) {
+    body {
         display: block;
         height: auto;
         width: auto;
     }
-    .login{
+
+    .login {
         width: 100vw;
         height: 100vh;
         padding: 0;
         border-radius: 0;
         padding: 0;
     }
-    .card{
+
+    .card {
         border-radius: 0;
         height: 100vh;
     }
-    .register{
+
+    .register {
         padding: 0;
     }
-    .container > h1{
+
+    .container>h1 {
         font-size: 3rem;
         margin-bottom: 3rem;
     }
-    .container{
+
+    .container {
         height: 80%;
         width: 80%;
 
     }
-    .container::before{
+
+    .container::before {
         border: none;
     }
-    .container label, i{
+
+    .container label,
+    i {
         font-size: 1rem
     }
-    .container > .btn-login{
+
+    .container>.btn-login {
         padding: 10px 40px;
         font-size: 1rem;
     }
-    .container > .btn-login:hover::before{
+
+    .container>.btn-login:hover::before {
         top: -15px;
     }
-    
-    .input-box{
+
+    .input-box {
         margin-bottom: 0;
     }
-    small{
+
+    small {
         margin-bottom: .8rem;
     }
-   
-    input{
+
+    input {
         font-size: 1.2rem;
     }
-    .cadastro, #register{
+
+    .cadastro,
+    #register {
         margin-top: .5rem;
         font-size: .8rem;
     }
-    footer{
+
+    footer {
         font-family: 'Poppins', sans-serif;
         font-size: 1rem;
         left: 50%;
@@ -246,6 +293,5 @@ footer{
         position: absolute;
         bottom: 10px;
         color: #fff;
-    }  
- 
+    }
 }

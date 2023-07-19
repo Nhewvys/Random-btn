@@ -7,21 +7,40 @@ const passwordError = document.getElementById("password-error");
 const confirmPasswordError = document.getElementById("confirm-password-error");
 const error1 = document.getElementById("error1");
 const loginButton = document.querySelector(".btn-login");
-const form = document.querySelector('form').addEventListener('submit',(e)=> {
+const form = document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault(); // Impede o envio padrão do formulário (refresh da página)
+  register();
 });
 
-function register(){
-  const emailR = emailInput.value;
+function validatePassword() {
   const passwordR = passwordInput.value;
-  loading();
+  const confirmPasswordR = confirmPasswordInput.value;
+
+  confirmPasswordError.textContent = "";
+  passwordError.textContent = "";
 
   if (passwordR.length < 6) {
     // Senha é menor que 6 caracteres
     passwordError.textContent = "A senha deve ter pelo menos 6 caracteres.";
-    confirmPasswordError.textContent = "A senha deve ter pelo menos 6 caracteres.";
+    return false; // Impede o registro se a senha for inválida
+  }
+
+  if (passwordR !== confirmPasswordR) {
+    confirmPasswordError.textContent = "As senhas não coincidem.";
+    return false; // Impede o registro se as senhas não coincidirem
+  }
+
+  return true; // Senhas válidas
+}
+
+function register() {
+  const emailR = emailInput.value;
+  const passwordR = passwordInput.value;
+  loading();
+
+  if (!validatePassword()) {
     loadingHide();
-    return; // Impede o registro se a senha for inválida
+    return; // Impede o registro se a validação das senhas falhar
   }
 
   firebase
@@ -32,27 +51,27 @@ function register(){
       window.location.href = "jogo.html";
       loadingHide();
     })
-    .catch(error => {
+    .catch((error) => {
       getError(error);
       loadingHide();
     });
 }
 
-function getError(error){
-  if(error.code == "auth/email-already-in-use"){
+function getError(error) {
+  if (error.code == "auth/email-already-in-use") {
     error1.textContent = "Este e-mail já está em uso";
   }
-  if(error.code == "auth/invalid-email"){
-    error1.textContent = "insira um e-mail válido"
+  if (error.code == "auth/invalid-email") {
+    error1.textContent = "insira um e-mail válido";
   }
-  return error.message;
+  // Se houver outros códigos de erro que você queira tratar, adicione aqui
 }
 
-eyeIcon.addEventListener("click", function() {
+eyeIcon.addEventListener("click", function () {
   togglePasswordVisibility(passwordInput, eyeIcon);
 });
 
-eyeIconfash.addEventListener("click", function() {
+eyeIconfash.addEventListener("click", function () {
   togglePasswordVisibility(confirmPasswordInput, eyeIconfash);
 });
 
@@ -65,16 +84,6 @@ function togglePasswordVisibility(inputField, iconElement) {
     inputField.type = "password";
     iconElement.classList.remove("fa-eye-slash");
     iconElement.classList.add("fa-eye");
-  }
-}
-
-function validatePassword() {
-  if (passwordInput.value !== confirmPasswordInput.value) {
-    confirmPasswordError.textContent = "As senhas não coincidem.";
-    passwordError.textContent = "As senhas não coincidem.";
-  } else {
-    confirmPasswordError.textContent = "";
-    passwordError.textContent = "";
   }
 }
 
@@ -91,5 +100,5 @@ function loadingHide() {
   loginButton.disabled = false;
 }
 
-passwordInput.addEventListener("input", validatePassword);
-confirmPasswordInput.addEventListener("input", validatePassword);
+passwordInput.addEventListener("onchange", validatePassword);
+confirmPasswordInput.addEventListener("onchange", validatePassword);

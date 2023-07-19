@@ -1,16 +1,8 @@
-// firebase.auth().onAuthStateChanged(user =>{
-//   if(user){
-//     window.location.href = "jogo.html"
-//   }
-// })
-
 const passwordInput = document.getElementById("senha");
 const eyeIcon = document.getElementById("eyeIcon");
 const loginButton = document.querySelector(".btn-login");
 const errorEmail = document.getElementById("error-email");
 const errorSenha = document.getElementById("error-senha");
-
-
 const form = document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault(); // Impede o envio padrão do formulário (refresh da página)
 });
@@ -27,9 +19,7 @@ eyeIcon.addEventListener("click", function () {
   }
 });
 
-loginButton.addEventListener("click", function () {
-  login();
-});
+loginButton.addEventListener("click", login);
 
 passwordInput.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
@@ -49,17 +39,19 @@ function login() {
   firebase
     .auth()
     .signInWithEmailAndPassword(username, password)
-    .then((response) => {
+    .then(() => {
       redirectToGamePage();
     })
     .catch((error) => {
-      alert(getErrorMessage(error));
+      getErrorMessage(error);
+    })
+    .finally(() => {
       loadingHide(); // Remove o ícone de carregamento
     });
 }
+
 function recoverPassword() {
   const emailInput = document.getElementById("user");
-
   const email = emailInput.value;
 
   loading(); // Exibe o ícone de carregamento
@@ -67,29 +59,37 @@ function recoverPassword() {
   firebase.auth().sendPasswordResetEmail(email)
     .then(() => {
       alert("Um email de recuperação foi enviado para o seu endereço.");
-      loadingHide(); // Remove o ícone de carregamento
     })
     .catch((error) => {
       alert("Ocorreu um erro ao enviar o email de recuperação.");
       console.error(error);
+    })
+    .finally(() => {
       loadingHide(); // Remove o ícone de carregamento
     });
 }
 
 function getErrorMessage(error) {
-  if (error.code == "auth/wrong-password") {
-    errorSenha.textContent = "Senha incorreta";
+  errorEmail.textContent = "";
+  errorSenha.textContent = "";
+
+  switch (error.code) {
+    case "auth/wrong-password":
+      errorSenha.textContent = "Senha incorreta";
+      break;
+    case "auth/user-not-found":
+      errorEmail.textContent = "Parece que você não tem uma conta";
+      break;
+    case "auth/invalid-email":
+      errorEmail.textContent = "Insira um email válido";
+      break;
+    case "auth/too-many-requests":
+      alert("Hmm, parece que estamos cheios agora.");
+      break;
+    default:
+      console.error(error);
+      alert("Ocorreu um erro ao fazer login.");
   }
-  if(error.code == "auth/user-not-found"){
-    errorEmail.textContent = "Parece que você nâo tem uma conta"
-  }
-  if(error.code == "auth/invalid-email"){
-    errorEmail.textContent = "Insira um email válido"
-  }
-  if (error.code == "auth/too-many-requests") {
-    return "Hmm, parece que estamos cheios agora.";
-  }
-  return error.message;
 }
 
 function redirectToGamePage() {
@@ -97,7 +97,6 @@ function redirectToGamePage() {
 
   setTimeout(function () {
     window.location.href = "jogo.html";
-    loadingHide()
   }, 1000);
 }
 
