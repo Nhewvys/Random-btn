@@ -16,29 +16,6 @@ body {
     /* background: linear-gradient(to bottom right, #ff7f50, #ff69b4); */
 }
 
-.main-play {
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    background-color: #333;
-    font-family: sans-serif;
-}
-
-.play-title {
-    color: #f8f8f8;
-}
-
-:is(#yes, #no) {
-    margin: .7rem;
-    padding: .6rem 2.5rem;
-    border: none;
-    background-color: #00fb47;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0px 0px 10px rgb(10, 205, 0);
-
-}
 
 /* --------index-------- */
 .card {

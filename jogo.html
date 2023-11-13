@@ -7,21 +7,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="assets/js/loading.js" defer></script>
     <title>Document</title>
 </head>
 
 <body>
+    
     <main class="main-play">
         <h1 class="play-title">Quer namorar comigo?</h1>
         <button id="yes">Sim</button>
         <button id="no" tabindex="-1" onclick="change(this)" onmouseover="change(this)">Não</button>
     </main>
+    <footer>
+        <button id="logout-button"><i style="color: white" class="fa-solid fa-right-from-bracket"></i></button>
+    </footer>
+    
+    <script src="assets/js/logout.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/index.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="assets/js/firebase-init.js"></script>
     <script src="assets/js/auth-guard.js"></script>
-    
 </body>
+<script>
+    function change(t) {
+    var no = t;
+    no.style.position = "absolute"
+    no.style.bottom = randomNumber(10, 90)
+    no.style.left = randomNumber(10, 90)
+    console.log("oi")
+}
+
+function randomNumber(min, max) {
+    return (Math.random() * (max - min) + min) + "%";
+
+}
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Tab') {
+        var noButton = document.getElementById('no');
+        if (!noButton.hasAttribute('tabindex')) {
+            event.preventDefault(); // Evita o comportamento padrão do navegador para a tecla Tab
+            alert("Achou que ia conseguir trapacear, né? Rs");
+        }
+    }
+});
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'F12') {
+        event.preventDefault(); // Evita o comportamento padrão da tecla F12
+        alert("O uso das ferramentas de desenvolvedor não é permitido!");
+    }
+});
+// document.addEventListener('contextmenu', function (event) {
+//     event.preventDefault(); // Evita o comportamento padrão do menu de contexto
+// });
+</script>
 </html>

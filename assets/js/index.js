@@ -44,10 +44,9 @@ function login() {
     })
     .catch((error) => {
       getErrorMessage(error);
-    })
-    .finally(() => {
       loadingHide(); // Remove o ícone de carregamento
-    });
+    })
+
 }
 
 function recoverPassword() {
