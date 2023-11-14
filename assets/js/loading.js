@@ -7,8 +7,6 @@ function createLoading() {
     wrapLoader.classList.add('wrapLoader');
     div.classList.add('loader');
     div.style.position = 'absolute';
-    div.style.top = '50%';
-    div.style.left = '50%';
     body.appendChild(wrapLoader);
     wrapLoader.appendChild(div)
 }
@@ -19,3 +17,4 @@ function removeLoading() {
 
     }
 }
+createLoading()
